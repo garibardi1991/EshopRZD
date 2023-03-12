@@ -26,7 +26,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-//@Tag("testEshop")
+@Tag("testEshop")
 public class TestsEshopRzd {
 
     @BeforeAll
