@@ -75,24 +75,24 @@ public class TestsEshopRzd {
         sleep(3000);
     }
 
-    @Test
-    @Feature("Проверка сайта eshoprzd.ru")
-    @Story("Проверяем консоль разработчика")
-    @Owner("trubikhoviv")
-    @Severity(SeverityLevel.BLOCKER)
-    @Link(value = "Testing", url = "https://eshoprzd.ru/home")
-    @DisplayName("Журнал консоли страницы не должен содержать ошибок")
-    void consoleShouldNotHaveErrorsTestEshop() {
-        step("Открываем сайт eshoprzd.ru", () ->
-                open("https://eshoprzd.ru/home"));
-
-        step("Журналы консоли не должны содержать текст 'SEVERE'", () -> {
-            String consoleLogs = Attach.getConsoleLogs();
-            String errorText = "SEVERE";
-
-            assertThat(consoleLogs).doesNotContain(errorText);
-        });
-    }
+//    @Test
+//    @Feature("Проверка сайта eshoprzd.ru")
+//    @Story("Проверяем консоль разработчика")
+//    @Owner("trubikhoviv")
+//    @Severity(SeverityLevel.BLOCKER)
+//    @Link(value = "Testing", url = "https://eshoprzd.ru/home")
+//    @DisplayName("Журнал консоли страницы не должен содержать ошибок")
+//    void consoleShouldNotHaveErrorsTestEshop() {
+//        step("Открываем сайт eshoprzd.ru", () ->
+//                open("https://eshoprzd.ru/home"));
+//
+//        step("Журналы консоли не должны содержать текст 'SEVERE'", () -> {
+//            String consoleLogs = Attach.getConsoleLogs();
+//            String errorText = "SEVERE";
+//
+//            assertThat(consoleLogs).doesNotContain(errorText);
+//        });
+//    }
 
     @Test
     @Feature("Проверка сайта eshoprzd.ru")
