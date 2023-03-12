@@ -111,7 +111,7 @@ public class TestsEshopRzd {
         File file = new File("C:/Users/user/IdeaProjects/EshopRZD/src/test/resources/files/2.Хаски.jpg");
         return Stream.of(
                 Arguments.of("Прочие вопросы", "Игорь", "garibardi@list.ru", "Hello", file, "Заполните все обязательные поля." ),
-                Arguments.of("Техническая поддержка, изменение реквизитов и пр.", "Вася", "garibardi@mail.ru", "Good job",file, "Заполните все обязательные поля.")
+                Arguments.of("Техническая поддержка, изменение реквизитов и пр.", "Вася", "garibardi@mail.ru", "Good job", file, "Заполните все обязательные поля.")
         );
     }
 
