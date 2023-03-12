@@ -26,7 +26,7 @@ import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Tag("testEshop")
+//@Tag("testEshop")
 public class TestsEshopRzd {
 
     @BeforeAll
@@ -108,7 +108,7 @@ public class TestsEshopRzd {
 
 
     static Stream<Arguments> openEshopRzdCheckForm(){
-        File file = new File("C:/Users/user/IdeaProjects/EshopRZD/src/test/resources/files/2.Хаски.jpg");
+        File file = new File("src/test/resources/files/2.Хаски.jpg");
         return Stream.of(
                 Arguments.of("Прочие вопросы", "Игорь", "garibardi@list.ru", "Hello", file, "Заполните все обязательные поля." ),
                 Arguments.of("Техническая поддержка, изменение реквизитов и пр.", "Вася", "garibardi@mail.ru", "Good job", file, "Заполните все обязательные поля.")
