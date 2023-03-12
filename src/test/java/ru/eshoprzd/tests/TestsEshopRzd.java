@@ -10,7 +10,6 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.eshoprzd.config.Property;
 import ru.eshoprzd.helpers.Attach;
@@ -20,7 +19,7 @@ import java.io.IOException;
 import java.util.stream.Stream;
 
 import static com.codeborne.pdftest.assertj.Assertions.assertThat;
-import static com.codeborne.selenide.Browsers.EDGE;
+import static com.codeborne.selenide.Browsers.CHROME;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -38,21 +37,13 @@ public class TestsEshopRzd {
         capabilities.setCapability("enableVideo", true);
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        Configuration.browser = EDGE;
-        Configuration.holdBrowserOpen = true;
-        EdgeOptions options = new EdgeOptions();
-        options.addArguments("start-maximized");
-        Configuration.browserCapabilities = options;
-        Configuration.browserSize = null;
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.headless = true;
-//        Configuration.browserCapabilities = capabilities;
-//        Configuration.browser = Property.browser();
-//        Configuration.browserVersion = Property.browserVersion();
-//        Configuration.browserSize = Property.browserSize();
-//        if (!Property.remoteUrl().equals("")) {
-//            Configuration.remote = Property.remoteUrl();
-//        }
+        Configuration.browserCapabilities = capabilities;
+        Configuration.browser = Property.browser();
+        Configuration.browserVersion = Property.browserVersion();
+        Configuration.browserSize = Property.browserSize();
+        if (!Property.remoteUrl().equals("")) {
+            Configuration.remote = Property.remoteUrl();
+        }
     }
 
     @AfterEach
