@@ -2,8 +2,6 @@ package ru.eshoprzd.helpers;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
-import org.junit.platform.commons.logging.Logger;
-import org.junit.platform.commons.logging.LoggerFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
