@@ -4,15 +4,15 @@ plugins {
             id 'io.qameta.allure' version '2.11.2'
 }
 
-allure {
+aallure {
     report {
-        version.set("2.19.0")
+        version.set(allureVersion)
     }
-    adapter {
-        aspectjWeaver.set true
+    adapter { // отвечает за появление папочки build/allure-results
+        aspectjWeaver.set(true) //обработка аннотации @Step
         frameworks {
-            junit5 {
-                adapterVersion.set("2.19.0")
+            junit5 { //название фреймворка
+                adapterVersion.set(allureVersion) //версия интеграции фреймворка и Allure
             }
         }
     }
