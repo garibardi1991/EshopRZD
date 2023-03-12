@@ -162,7 +162,7 @@ public class TestsEshopRzd {
         open("https://eshoprzd.ru/documents"));
 
         step("Скачиваем файл 'Регламент работы' и сравниваем с эталонным файлом", () -> {
-            var downloadedFile = $("[href='downloads/reglament_em.pdf']").download();
+            var downloadedFile = $("[href='/downloads/reglament_em.pdf']").download();
             var etalon = new File("src/test/resources/files/reglament_em.pdf");
             var isEqual = FileUtils.contentEquals(downloadedFile, etalon);
             assertTrue(isEqual);
