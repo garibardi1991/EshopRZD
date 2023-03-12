@@ -1,6 +1,5 @@
 package ru.eshoprzd.tests;
 
-import cloud.autotests.helpers.DriverUtils;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
