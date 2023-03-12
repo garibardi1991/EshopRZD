@@ -19,7 +19,6 @@ import java.io.IOException;
 import java.util.stream.Stream;
 
 import static com.codeborne.pdftest.assertj.Assertions.assertThat;
-import static com.codeborne.selenide.Browsers.CHROME;
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
@@ -37,6 +36,9 @@ public class TestsEshopRzd {
         capabilities.setCapability("enableVideo", true);
         SelenideLogger.addListener("allure", new AllureSelenide());
 
+//        Configuration.baseUrl = "https://eshoprzd.ru/";
+//        Configuration.browserSize = "1920x1080";
+//        Configuration.headless = true;
         Configuration.browserCapabilities = capabilities;
         Configuration.browser = Property.browser();
         Configuration.browserVersion = Property.browserVersion();
