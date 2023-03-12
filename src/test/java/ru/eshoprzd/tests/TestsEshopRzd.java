@@ -50,15 +50,25 @@ public class TestsEshopRzd {
     @Link(value = "Testing", url = "https://eshoprzd.ru/home")
     @DisplayName("Проверка наличия формы ввода логина")
     void openEshop() {
-        open("https://eshoprzd.ru/home");
-        $("#login-btn").click();
-        $("[ng-click*='showLoginForm']").should(appear);
+        step("Открываем сайт eshoprzd.ru", () ->
+        open("https://eshoprzd.ru/home"));
+
+        step("Нажимаем на кнопку 'Вход'", () ->
+        $("#login-btn").click());
+
+        step("Проверяем наличие формы 'Входа'", () ->
+        $("[ng-click*='showLoginForm']").should(appear));
         sleep(3000);
     }
 
     @Test
-    @DisplayName("Page console log should not have errors")
-    void consoleShouldNotHaveErrorsTest() {
+    @Feature("Проверка сайта eshoprzd.ru")
+    @Story("Проверяем консоль разработчика")
+    @Owner("trubikhoviv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://eshoprzd.ru/home")
+    @DisplayName("Журнал консоли страницы не должен содержать ошибок")
+    void consoleShouldNotHaveErrorsTestEshop() {
         step("Открываем сайт eshoprzd.ru", () ->
             open("https://eshoprzd.ru/home"));
 
@@ -69,5 +79,25 @@ public class TestsEshopRzd {
             assertThat(consoleLogs).doesNotContain(errorText);
         });
     }
+
+    @Test
+    @Feature("Проверка сайта eshoprzd.ru")
+    @Story("Проверяем наличие раздела 'Об Электронном магазине'")
+    @Owner("trubikhoviv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://eshoprzd.ru/home")
+    @DisplayName("На главной странице должен отображаться раздел 'Об Электронном магазине'")
+    void titleTest() {
+        step("Открываем сайт eshoprzd.ru", () ->
+                open("https://eshoprzd.ru/home"));
+
+        step("На главной странице должен отображаться раздел с наименование 'Об Электронном магазине'", () -> {
+            String expectedTitle = "Об Электронном магазине";
+            String actualTitle = title();
+
+            assertThat(actualTitle).isEqualTo(expectedTitle);
+        });
+    }
+
 }
 
