@@ -9,7 +9,7 @@ allure {
         version.set("2.19.0")
     }
     adapter {
-        aspectjWeaver.set true
+        aspectjWeaver.set(true)
         frameworks {
             junit5 {
                 adapterVersion.set("2.19.0")
