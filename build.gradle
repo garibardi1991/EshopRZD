@@ -56,11 +56,11 @@ tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
 
-//task testThreadQA(type: Test) {
+//task testEshop(type: Test) {
 //    useJUnitPlatform {
-//        includeTags 'testThreadQA'
+//        includeTags 'testEshop'
 //    }
-
+//}
 
     task security(type: Test) {
         maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
