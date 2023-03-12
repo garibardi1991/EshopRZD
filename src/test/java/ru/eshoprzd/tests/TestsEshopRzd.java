@@ -108,7 +108,7 @@ public class TestsEshopRzd {
 
 
     static Stream<Arguments> openEshopRzdCheckForm(){
-        File file = new File("src/test/resources/files/2. Хаски.jpg");
+        File file = new File("src/test/resources/files/haski.jpg");
         return Stream.of(
                 Arguments.of("Прочие вопросы", "Игорь", "garibardi@list.ru", "Hello", file, "Заполните все обязательные поля." ),
                 Arguments.of("Техническая поддержка, изменение реквизитов и пр.", "Вася", "garibardi@mail.ru", "Good job", file, "Заполните все обязательные поля.")
