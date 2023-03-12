@@ -81,7 +81,7 @@ public class TestsEshopRzd {
     @DisplayName("Журнал консоли страницы не должен содержать ошибок")
     void consoleShouldNotHaveErrorsTestEshop() {
         step("Открываем сайт eshoprzd.ru", () ->
-            open("https://eshoprzd.ru/home"));
+                open("https://eshoprzd.ru/home"));
 
         step("Журналы консоли не должны содержать текст 'SEVERE'", () -> {
             String consoleLogs = Attach.getConsoleLogs();
@@ -108,7 +108,7 @@ public class TestsEshopRzd {
 
 
     static Stream<Arguments> openEshopRzdCheckForm(){
-        File file = new File("src/test/resources/files/2. Хаски.jpg");
+        File file = new File("C:/Users/user/IdeaProjects/EshopRZD/src/test/resources/files/2.Хаски.jpg");
         return Stream.of(
                 Arguments.of("Прочие вопросы", "Игорь", "garibardi@list.ru", "Hello", file, "Заполните все обязательные поля." ),
                 Arguments.of("Техническая поддержка, изменение реквизитов и пр.", "Вася", "garibardi@mail.ru", "Good job",file, "Заполните все обязательные поля.")
