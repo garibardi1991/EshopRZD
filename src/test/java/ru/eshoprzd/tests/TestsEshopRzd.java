@@ -5,6 +5,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -14,6 +15,7 @@ import ru.eshoprzd.config.Property;
 import ru.eshoprzd.helpers.Attach;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.stream.Stream;
 
 import static com.codeborne.pdftest.assertj.Assertions.assertThat;
@@ -22,6 +24,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Tag("testEshop")
 public class TestsEshopRzd {
@@ -147,7 +150,23 @@ public class TestsEshopRzd {
         $(".alert-danger").shouldHave(Condition.text(message));
         });
     }
+    @Test
+    @Feature("Проверка сайта eshoprzd.ru")
+    @Story("Проверяем скачивание файлов'")
+    @Owner("trubikhoviv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://eshoprzd.ru/home")
+    @DisplayName("Должен быть скачен документ 'Регламент работ'")
+    public void downloadFile() throws IOException {
+        step("Открываем сайт eshoprzd.ru, раздел 'Документы'", () ->
+        open("https://eshoprzd.ru/documents"));
 
-
+        step("Скачиваем файл 'Регламент работы' и сравниваем с эталонным файлом", () -> {
+            var downloadedFile = $("[href='downloads/reglament_em.pdf']").download();
+            var etalon = new File("src/test/resources/files/reglament_em.pdf");
+            var isEqual = FileUtils.contentEquals(downloadedFile, etalon);
+            assertTrue(isEqual);
+        });
+    }
 }
 
