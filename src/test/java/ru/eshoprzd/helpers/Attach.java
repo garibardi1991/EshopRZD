@@ -2,6 +2,8 @@ package ru.eshoprzd.helpers;
 
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Attachment;
+import org.junit.platform.commons.logging.Logger;
+import org.junit.platform.commons.logging.LoggerFactory;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -34,6 +36,7 @@ public class Attach {
                 "Browser console logs",
                 String.join("\n", Selenide.getWebDriverLogs(BROWSER))
         );
+
     }
 
 
@@ -55,7 +58,11 @@ public class Attach {
         return null;
     }
 
-    public static String getSessionId(){
+    public static String getSessionId() {
         return ((RemoteWebDriver) getWebDriver()).getSessionId().toString();
+    }
+
+    public static String getConsoleLogs() { // todo refactor
+        return String.join("\n", Selenide.getWebDriverLogs(BROWSER));
     }
 }

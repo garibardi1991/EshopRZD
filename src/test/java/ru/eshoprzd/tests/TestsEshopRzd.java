@@ -1,14 +1,19 @@
 package ru.eshoprzd.tests;
 
+import cloud.autotests.helpers.DriverUtils;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.eshoprzd.config.Property;
 import ru.eshoprzd.helpers.Attach;
+
+import static com.codeborne.pdftest.assertj.Assertions.assertThat;
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Selenide.*;
+import static io.qameta.allure.Allure.step;
 
 @Tag("testEshop")
 public class TestsEshopRzd {
@@ -37,6 +42,32 @@ public class TestsEshopRzd {
         Attach.addVideo();
     }
 
+    @Test
+    @Feature("Проверка сайта eshoprzd.ru")
+    @Story("Проверяем раздел Вход")
+    @Owner("trubikhoviv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://eshoprzd.ru/home")
+    @DisplayName("Проверка наличия формы ввода логина")
+    void openEshop() {
+        open("https://eshoprzd.ru/home");
+        $("#login-btn").click();
+        $("[ng-click*='showLoginForm']").should(appear);
+        sleep(3000);
+    }
 
+    @Test
+    @DisplayName("Page console log should not have errors")
+    void consoleShouldNotHaveErrorsTest() {
+        step("Открываем сайт eshoprzd.ru", () ->
+            open("https://eshoprzd.ru/home"));
 
+        step("Журналы консоли не должны содержать текст 'SEVERE'", () -> {
+            String consoleLogs = Attach.getConsoleLogs();
+            String errorText = "SEVERE";
+
+            assertThat(consoleLogs).doesNotContain(errorText);
+        });
+    }
 }
+
