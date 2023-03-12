@@ -86,7 +86,7 @@ public class TestsEshopRzd {
         step("Открываем сайт eshoprzd.ru", () ->
                 open("https://eshoprzd.ru/home"));
 
-        step("Журналы консоли не должны содержать текст 'SEVERE'", () -> {
+        step("Console logs should not contain text 'SEVERE'", () -> {
             String consoleLogs = Attach.getConsoleLogs();
             String errorText = "SEVERE";
 
