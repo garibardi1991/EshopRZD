@@ -7,7 +7,7 @@
     "reportLink": "",
     "language": "ru",
     "allureFolder": "allure-report/",
-    "enableChart": false
+    "enableChart": true
   },
   "telegram": {
     "token": "5956062624:AAE-8rKQtgJZP_dJopiA26HIEu6KefQ4C70",
