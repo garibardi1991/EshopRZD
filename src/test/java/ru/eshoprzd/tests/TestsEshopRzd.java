@@ -36,16 +36,16 @@ public class TestsEshopRzd {
         capabilities.setCapability("enableVideo", true);
         SelenideLogger.addListener("allure", new AllureSelenide());
 
-        Configuration.baseUrl = "https://eshoprzd.ru/";
-        Configuration.browserSize = "1920x1080";
-        Configuration.headless = true;
-//        Configuration.browserCapabilities = capabilities;
-//        Configuration.browser = Property.browser();
-//        Configuration.browserVersion = Property.browserVersion();
-//        Configuration.browserSize = Property.browserSize();
-//        if (!Property.remoteUrl().equals("")) {
-//            Configuration.remote = Property.remoteUrl();
-//        }
+//        Configuration.baseUrl = "https://eshoprzd.ru/";
+//        Configuration.browserSize = "1920x1080";
+//        Configuration.headless = true;
+        Configuration.browserCapabilities = capabilities;
+        Configuration.browser = Property.browser();
+        Configuration.browserVersion = Property.browserVersion();
+        Configuration.browserSize = Property.browserSize();
+        if (!Property.remoteUrl().equals("")) {
+            Configuration.remote = Property.remoteUrl();
+        }
     }
 
     @AfterEach
