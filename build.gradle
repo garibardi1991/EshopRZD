@@ -62,16 +62,16 @@ task testEshop(type: Test) {
     }
 }
 
-//    task security(type: Test) {
-//        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
-//        systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
-//        systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
-//        systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
-//        systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'same_thread'
-//        systemProperty 'junit.jupiter.execution.parallel.config.strategy', 'dynamic'
-//        systemProperty 'junit.jupiter.execution.parallel.config.dynamic.factor', '1'
-//
-//        useJUnitPlatform {
-//            includeTags 'testEshop'
-//        }
-//    }
+    task security(type: Test) {
+        maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+        systemProperty 'junit.jupiter.extensions.autodetection.enabled', 'true'
+        systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
+        systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
+        systemProperty 'junit.jupiter.execution.parallel.mode.classes.default', 'same_thread'
+        systemProperty 'junit.jupiter.execution.parallel.config.strategy', 'dynamic'
+        systemProperty 'junit.jupiter.execution.parallel.config.dynamic.factor', '1'
+
+        useJUnitPlatform {
+            includeTags 'testEshop'
+        }
+    }
