@@ -152,7 +152,7 @@ public class TestsEshopRzd {
     }
     @Test
     @Feature("Проверка сайта eshoprzd.ru")
-    @Story("Проверяем скачивание файлов'")
+    @Story("Проверяем скачивание файлов")
     @Owner("trubikhoviv")
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "Testing", url = "https://eshoprzd.ru/home")
