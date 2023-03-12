@@ -3,7 +3,7 @@
     "project": "EshopRZD",
     "environment": "EshopRZD",
     "comment": "any comment here, @garibardi1991",
-    "reportLink": "",
+    "reportLink": "https://jenkins.autotests.cloud/job/EshopRZD/33/allure/",
     "language": "ru",
     "allureFolder": "allure-report/",
     "enableChart": true
