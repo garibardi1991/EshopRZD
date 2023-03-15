@@ -5,12 +5,14 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import ru.eshoprzd.config.AuthConfig;
 import ru.eshoprzd.config.Property;
 import ru.eshoprzd.config.TestBase;
 import ru.eshoprzd.helpers.Attach;
@@ -86,10 +88,12 @@ public class TestsEshopRzd extends TestBase {
 
 
     static Stream<Arguments> openEshopRzdCheckForm(){
+        AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
         File file = new File("src/test/resources/files/haski.jpg");
         return Stream.of(
-                Arguments.of("Прочие вопросы", "Игорь", "garibardi@list.ru", "Hello", file, "Заполните все обязательные поля." ),
-                Arguments.of("Техническая поддержка, изменение реквизитов и пр.", "Вася", "garibardi@mail.ru", "Good job", file, "Заполните все обязательные поля.")
+                Arguments.of("Прочие вопросы", config.name(), config.email(), "Hello", file, "Заполните все обязательные поля." ),
+                Arguments.of("Техническая поддержка, изменение реквизитов и пр.", config.name2(), config.email2(), "Good job", file, "Заполните все обязательные поля.")
+
         );
     }
 
@@ -102,6 +106,8 @@ public class TestsEshopRzd extends TestBase {
     @Link(value = "Testing", url = "https://eshoprzd.ru/home")
     @DisplayName("Проверка заполнения обязательных полей и подгрузка файлов")
     void openEshopRzdCheckForm(String subject, String name, String email, String text, File file, String message){
+
+
         step("Открываем сайт eshoprzd.ru, раздел 'Контакты'", () ->
         open("https://eshoprzd.ru/contacts"));
 
@@ -146,5 +152,33 @@ public class TestsEshopRzd extends TestBase {
             assertTrue(isEqual);
         });
     }
+
+    @Test
+    @Feature("Проверка сайта eshoprzd.ru")
+    @Story("Проверяем раздел 'Контакты'")
+    @Owner("trubikhoviv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "Testing", url = "https://eshoprzd.ru/home")
+    @DisplayName("Проверка заполнения обязательных полей")
+    void openCheckForm(){
+        AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
+
+        step("Открываем сайт eshoprzd.ru, раздел 'Контакты'", () ->
+                open("https://eshoprzd.ru/contacts"));
+
+
+        step("Заполянем 'Пожалуйста, представьтесь'", () ->
+                $("#name").setValue(config.name()));
+
+        step("Заполянем 'Электронная почта'", () ->
+                $("#email").setValue(config.email()));
+
+
+        step("Проверяем выходит ли сообщение 'Заполните все обязательные поля.'", () ->{
+            $("[ng-click='sendFeedback(content)']").click();
+            $(".alert-danger").shouldHave(Condition.text("Заполните все обязательные поля."));
+        });
+    }
+
 }
 
