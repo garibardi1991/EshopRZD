@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.eshoprzd.config.Property;
+import ru.eshoprzd.config.TestBase;
 import ru.eshoprzd.helpers.Attach;
 
 import java.io.File;
@@ -27,34 +28,8 @@ import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Tag("testEshop")
-public class TestsEshopRzd {
+public class TestsEshopRzd extends TestBase {
 
-    @BeforeAll
-    static void configure() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("enableVNC", true);
-        capabilities.setCapability("enableVideo", true);
-        SelenideLogger.addListener("allure", new AllureSelenide());
-
-//        Configuration.baseUrl = "https://eshoprzd.ru/";
-//        Configuration.browserSize = "1920x1080";
-//        Configuration.headless = true;
-        Configuration.browserCapabilities = capabilities;
-        Configuration.browser = Property.browser();
-        Configuration.browserVersion = Property.browserVersion();
-        Configuration.browserSize = Property.browserSize();
-        if (!Property.remoteUrl().equals("")) {
-            Configuration.remote = Property.remoteUrl();
-        }
-    }
-
-    @AfterEach
-    void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        Attach.browserConsoleLogs();
-        Attach.addVideo();
-    }
 
     @Test
     @Feature("Проверка сайта eshoprzd.ru")
