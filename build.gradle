@@ -37,8 +37,8 @@ dependencies {
             'com.opencsv:opencsv:5.7.1',
             'com.google.code.gson:gson:2.10.1',
             'com.fasterxml.jackson.core:jackson-core:2.14.0-rc3',
-            'io.qameta.allure:allure-selenide:2.19.0'
-
+            'io.qameta.allure:allure-selenide:2.19.0',
+            'org.aeonbits.owner:owner:1.0.12'
 
     )
     implementation 'com.github.lbovolini:ObjectMapper:0.2.3'
