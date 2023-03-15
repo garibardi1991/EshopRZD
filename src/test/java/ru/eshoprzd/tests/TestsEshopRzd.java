@@ -1,19 +1,16 @@
 package ru.eshoprzd.tests;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.*;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import ru.eshoprzd.config.AuthConfig;
-import ru.eshoprzd.config.Property;
 import ru.eshoprzd.config.TestBase;
 import ru.eshoprzd.helpers.Attach;
 
