@@ -55,7 +55,7 @@
 >
 > Например размер запускаемого браузера или тип браузера. Сами тесты запускаются удаленно с помощью <code>Selenoid</code>
 <p align="center">
-<img title="Сборка в Jenkins с параметрами" src="images/Jenkins.PNG">
+<img title="Сборка в Jenkins с параметрами" src="images/Jenkins.png">
 </p>
 
 ## <img src="images/Allure_Report.svg" width="25" height="25"  alt="Allure_Report" title="Allure_Report" title="Allure_Report"/></a> Allure отчет
@@ -65,7 +65,7 @@
 > Например в отчет пишутся все селекторы и методы <code>Selenide</code>, отчеты формируются по категориям, в конце приложен скриншот, видео запись прогона теста и логи.
 Для API тестов полностью указаны данные запроса/ответа
 <p align="center">
-<img title="Allure отчет" src="images/Allure.PNG">
+<img title="Allure отчет" src="images/Allure.png">
 </p>
 <p align="center">
 <img title="Allure отчет" src="images/Allure2.PNG">
