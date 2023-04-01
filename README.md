@@ -65,6 +65,9 @@
 > Например в отчет пишутся все селекторы и методы <code>Selenide</code>, отчеты формируются по категориям, в конце приложен скриншот, видео запись прогона теста и логи.
 Для API тестов полностью указаны данные запроса/ответа
 <p align="center">
+<img title="Allure отчет" src="images/Allure1.png">
+</p>
+<p align="center">
 <img title="Allure отчет" src="images/Allure.png">
 </p>
 <p align="center">
