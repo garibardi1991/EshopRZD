@@ -1,10 +1,12 @@
 package ru.eshoprzd.api;
 
 import com.codeborne.selenide.Selenide;
+import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
 import ru.eshoprzd.config.AuthConfig;
+import ru.eshoprzd.config.TestBase;
 
 import java.util.HashMap;
 
@@ -14,7 +16,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.restassured.http.ContentType.JSON;
 
 
-public class TestAuth {
+public class TestAuth extends TestBase {
 
 
     @Test
@@ -25,6 +27,7 @@ public class TestAuth {
         body.put("password", config.password());
 
         var response = RestAssured.given()
+                .filter(new AllureRestAssured())
                 .relaxedHTTPSValidation()
                 .contentType(JSON)
                 .header("type-shop", "rzd")
