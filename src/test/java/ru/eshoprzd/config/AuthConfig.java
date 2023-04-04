@@ -18,4 +18,10 @@ public interface AuthConfig extends Config {
 
     @Key("email2")
     String email2();
+
+    @Key("login")
+    String login();
+
+    @Key("password")
+    String password();
 }
