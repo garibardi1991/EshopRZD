@@ -4,6 +4,7 @@ import com.codeborne.selenide.Selenide;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import ru.eshoprzd.config.AuthConfig;
 import ru.eshoprzd.config.TestBaseApi;
@@ -15,7 +16,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.restassured.http.ContentType.JSON;
 
-
+@Tag("testEshop")
 public class TestAuth extends TestBaseApi {
 
 
