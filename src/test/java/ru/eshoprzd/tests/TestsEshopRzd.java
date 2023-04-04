@@ -12,22 +12,20 @@ import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import ru.eshoprzd.config.AuthConfig;
 import ru.eshoprzd.config.TestBase;
-import ru.eshoprzd.helpers.Attach;
+import ru.eshoprzd.pages.PageObjectsEshopRzd;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.stream.Stream;
 
-import static com.codeborne.pdftest.assertj.Assertions.assertThat;
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Tag("testEshop")
 public class TestsEshopRzd extends TestBase {
+    PageObjectsEshopRzd pageObjectsEshopRzd= new PageObjectsEshopRzd();
 
 
     @Test
@@ -39,14 +37,13 @@ public class TestsEshopRzd extends TestBase {
     @DisplayName("Проверка наличия формы ввода логина")
     void openEshop() {
         step("Открываем сайт eshoprzd.ru", () ->
-        open("https://eshoprzd.ru/home"));
+                pageObjectsEshopRzd.openPage());
 
         step("Нажимаем на кнопку 'Вход'", () ->
-        $("#login-btn").click());
+                pageObjectsEshopRzd.loginClick());
 
         step("Проверяем наличие формы 'Входа'", () ->
-        $("[ng-click*='showLoginForm']").should(appear));
-        sleep(3000);
+                pageObjectsEshopRzd.shouldEntrance());
     }
 
     @Test
@@ -58,13 +55,10 @@ public class TestsEshopRzd extends TestBase {
     @DisplayName("Журнал консоли страницы не должен содержать ошибок")
     void consoleShouldNotHaveErrorsTestEshop() {
         step("Открываем сайт eshoprzd.ru", () ->
-                open("https://eshoprzd.ru/home"));
+                pageObjectsEshopRzd.openPage());
 
-        step("Console logs should not contain text 'SEVERE'", () -> {
-            String consoleLogs = Attach.getConsoleLogs();
-            String errorText = "SEVERE";
-
-            assertThat(consoleLogs).doesNotContain(errorText);
+        step("Журналы консоли не должны содержать текст 'SEVERE'", () -> {
+            pageObjectsEshopRzd.checkingСonsole();
         });
     }
 
@@ -77,10 +71,10 @@ public class TestsEshopRzd extends TestBase {
     @DisplayName("На главной странице должна отображаться информация 'На нашем сайте мы используем файлы cookie. Продо...'")
     void titleTest() {
         step("Открываем сайт eshoprzd.ru", () ->
-                open("https://eshoprzd.ru/home"));
+                pageObjectsEshopRzd.openPage());
 
         step("Проверка наличия отображения информации 'На нашем сайте мы используем файлы cookie. Продолжая работу на сайте, Вы даете согласие на использование файлов cookie.'", () ->
-            $(".ng-scope").shouldHave(text("На нашем сайте мы используем файлы cookie. Продолжая работу на сайте, Вы даете согласие на использование файлов cookie.")));
+                pageObjectsEshopRzd.checkingForm());
     }
 
 
@@ -106,7 +100,7 @@ public class TestsEshopRzd extends TestBase {
 
 
         step("Открываем сайт eshoprzd.ru, раздел 'Контакты'", () ->
-        open("https://eshoprzd.ru/contacts"));
+        pageObjectsEshopRzd.openContacts());
 
         step("Заполянем 'Выберите тему'", () ->{
         $("#theme").click();
@@ -140,7 +134,7 @@ public class TestsEshopRzd extends TestBase {
     @DisplayName("Должен быть скачен документ 'Регламент работ'")
     public void downloadFile() throws IOException {
         step("Открываем сайт eshoprzd.ru, раздел 'Документы'", () ->
-        open("https://eshoprzd.ru/documents"));
+        pageObjectsEshopRzd.openDocuments());
 
         step("Скачиваем файл 'Регламент работы' и сравниваем с эталонным файлом", () -> {
             var downloadedFile = $("[href='/downloads/reglament_em.pdf']").download();
@@ -161,7 +155,7 @@ public class TestsEshopRzd extends TestBase {
         AuthConfig config = ConfigFactory.create(AuthConfig.class, System.getProperties());
 
         step("Открываем сайт eshoprzd.ru, раздел 'Контакты'", () ->
-                open("https://eshoprzd.ru/contacts"));
+                pageObjectsEshopRzd.openContacts());
 
 
         step("Заполянем 'Пожалуйста, представьтесь'", () ->
@@ -172,8 +166,7 @@ public class TestsEshopRzd extends TestBase {
 
 
         step("Проверяем выходит ли сообщение 'Заполните все обязательные поля.'", () ->{
-            $("[ng-click='sendFeedback(content)']").click();
-            $(".alert-danger").shouldHave(Condition.text("Заполните все обязательные поля."));
+            pageObjectsEshopRzd.checkingMessage();
         });
     }
 
