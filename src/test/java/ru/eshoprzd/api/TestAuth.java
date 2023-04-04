@@ -6,7 +6,7 @@ import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
 import ru.eshoprzd.config.AuthConfig;
-import ru.eshoprzd.config.TestBase;
+import ru.eshoprzd.config.TestBaseApi;
 
 import java.util.HashMap;
 
@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static io.restassured.http.ContentType.JSON;
 
 
-public class TestAuth extends TestBase {
+public class TestAuth extends TestBaseApi {
 
 
     @Test
