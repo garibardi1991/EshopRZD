@@ -47,7 +47,7 @@
 - Проверка заполнения обязательных полей
 
 ## :scroll: Примеры API тестов
-- Проверка поиска сущностей и разбор тела ответа
+- Проверка авторизации на сайте
 
 ## <img src="images/Jenkins.svg" width="25" height="25"  alt="Jenkins" title="Jenkins"/></a> Сборка в Jenkins с параметрами
 >
@@ -89,8 +89,3 @@
 <p>
 <img title="Selenoid Video" src="images/Selenoid.gif" alt="video">
 </p>
-
-<h2>
-  :crystal_ball: Всю сборку можно запустить самостоятельно https://jenkins.autotests.cloud/job/mipkasnow-QaGuru-Diploma-Project-UI/ (необходимо предварительно  зарегистрироваться)
-  Отчет в телеграм придет в чат https://t.me/+z08EK641X7dmNjZi
-</h2>
