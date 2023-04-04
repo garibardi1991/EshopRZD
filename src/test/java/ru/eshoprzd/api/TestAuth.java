@@ -15,6 +15,7 @@ import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static io.restassured.http.ContentType.JSON;
+import static ru.eshoprzd.helpers.CustomApiListener.withCustomTemplates;
 
 @Tag("testEshop")
 public class TestAuth extends TestBaseApi {
@@ -28,6 +29,7 @@ public class TestAuth extends TestBaseApi {
         body.put("password", config.password());
 
         var response = RestAssured.given()
+                .filter(withCustomTemplates())
                 .filter(new AllureRestAssured())
                 .relaxedHTTPSValidation()
                 .contentType(JSON)
