@@ -71,7 +71,7 @@
 <img title="Allure отчет" src="images/Allure.png">
 </p>
 <p align="center">
-<img title="Allure отчет" src="images/Allure2.PNG">
+<img title="Allure отчет" src="images/Allure2.png">
 </p>
 
 ## <img width="4%" title="Telegram" src="images/Telegram.svg"> Отчет в Telegram с помощью бота
@@ -79,7 +79,7 @@
 > После прогона всех тестов в <code>Telegram</code> чат автоматически приходит сообщение с полной информацией о прогоне и ссылкой на <code>Allure</code>
 >
 <p>
-<img title="Отчет в Telegram с помощью бота" src="images/Telegram.PNG">
+<img title="Отчет в Telegram с помощью бота" src="images/Telegram.png">
 </p>
 
 ## :film_projector: Видео прохождения тестов на Selenoid
